@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2005
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29230.47
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OzNet", "OzNet\OzNet.csproj", "{A7C628B7-57DC-4D33-A22E-102B23EA0CCF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DMSAPIGateway", "DMSAPIGateway\DMSAPIGateway.csproj", "{A7C628B7-57DC-4D33-A22E-102B23EA0CCF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

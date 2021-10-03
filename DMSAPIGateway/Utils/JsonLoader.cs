@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OzNet.Utils
+namespace DMSAPIGateway.Utils
 {
     public class JsonLoader
     {

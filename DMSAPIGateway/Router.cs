@@ -1,4 +1,4 @@
-﻿using OzNet.Utils;
+﻿using DMSAPIGateway.Utils;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System;
@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Primitives;
 
-namespace OzNet
+namespace DMSAPIGateway
 {
     public class Router
     {
