@@ -34,6 +34,7 @@ namespace Example
             {
                 var content = await router.RouteRequest(context.Request);
                 var resString = await content.Content.ReadAsStringAsync();
+                // context.Response.Headers["ContentType"]= content.Content.Headers["ContentType"];
                 await context.Response.WriteAsync(resString);
                 //await context.Response.WriteAsync(await content.Content.ReadAsStringAsync());
             });

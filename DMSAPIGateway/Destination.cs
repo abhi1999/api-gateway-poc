@@ -15,12 +15,11 @@ namespace DMSAPIGateway
         public bool SendCookiesAndAuth { get; set; }
 
         static HttpClientHandler handler = new HttpClientHandler();
-        public bool RequiresAuthentication { get; set; }
         static HttpClient client = new HttpClient(handler, false);
-        public Destination(string uri, bool requiresAuthentication)
+        public Destination(string uri, bool sendCookiesAndAuth)
         {
             Path = uri;
-            RequiresAuthentication = requiresAuthentication;
+            SendCookiesAndAuth = sendCookiesAndAuth;
         }
 
         public Destination(string path)
@@ -31,7 +30,6 @@ namespace DMSAPIGateway
         private Destination()
         {
             Path = "/";
-            RequiresAuthentication = false;
         }
 
         public async Task<HttpResponseMessage> SendRequest(HttpRequest request)
@@ -48,31 +46,21 @@ namespace DMSAPIGateway
             using (var newRequest = new HttpRequestMessage(new HttpMethod(request.Method), CreateDestinationUri(request)))
             {
                 newRequest.Content = new StringContent(requestContent, Encoding.UTF8, request.ContentType);
-
                 if (this.SendCookiesAndAuth)
                 {
-
-
                     foreach (var c in request.Cookies)
                     {
                         newRequest.Headers.Add("Cookie", c.Key + "=" + c.Value);
                     }
-                    /*if (request.Headers["Authorization"].ToString().Length > 0 && request.Headers["Authorization"].ToString().IndexOf("null") == -1){
-                        newRequest.Headers.Add("Authorization", request.Headers["Authorization"].ToString());
-                    }
-                    if (request.Headers["ClientKey"].ToString().Length > 0 && request.Headers["ClientKey"].ToString().IndexOf("null") == -1)
-                    {
-                        newRequest.Headers.Add("ClientKey", request.Headers["ClientKey"].ToString());
-                    }*/
                     addCustomHeader("Authorization", request, newRequest);
                     addCustomHeader("ClientKey", request, newRequest);
 
                 }
                 HttpResponseMessage response = await client.SendAsync(newRequest);
-
                 return response;
                  
-                /*using (HttpResponseMessage response = await client.SendAsync(newRequest))
+                /*Using a throwing an expection because the response message object is discarded
+                using (HttpResponseMessage response = await client.SendAsync(newRequest))
                 {
                     //var responseString = await response.Content.ReadAsStringAsync();
                     // return responseString;
@@ -94,12 +82,6 @@ namespace DMSAPIGateway
             string queryString = request.QueryString.ToString();
 
             string endpoint = "";
-          //  string[] endpointSplit = requestPath.Substring(1).Split('/');
-
-         //   if (endpointSplit.Length > 1)
-         //       endpoint = endpointSplit[1];
-
-
             return Path + endpoint + queryString;
         }
 

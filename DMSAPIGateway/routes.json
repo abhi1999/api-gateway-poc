@@ -1,17 +1,24 @@
 ﻿{
   "routes": [
     {
-      "endpoint": "/movies",
+      "endpoint": "*",
+      "isStaticContent": true,
+      "client": "1",
       "destination": {
-        "path": "http://localhost:8090/movies/",
-        "requiresAuthentication": "true"
+        "path": "http://localhost:9005",
+        "path1": "https://2k12develop1.datamasons.com:5011",
+        "requiresAuthentication": "false",
+        "sendCookiesAndAuth": false
       }
     },
     {
-      "endpoint": "/songs",
+      "endpoint": "*",
+      "isStaticContent": false,
+      "client": "1",
       "destination": {
-        "path": "http://localhost:8091/songs/",
-        "requiresAuthentication": "false"
+        "path": "https://2k12develop1.datamasons.com:5001",
+        "requiresAuthentication": "false",
+        "sendCookiesAndAuth": true
       }
     }
   ],
