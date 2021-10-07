@@ -6,7 +6,6 @@
       "client": "1",
       "destination": {
         "path": "http://localhost:9005",
-        "path1": "https://2k12develop1.datamasons.com:5011",
         "requiresAuthentication": "false",
         "sendCookiesAndAuth": false
       }
@@ -17,6 +16,16 @@
       "client": "1",
       "destination": {
         "path": "https://2k12develop1.datamasons.com:5001",
+        "requiresAuthentication": "false",
+        "sendCookiesAndAuth": true
+      }
+    },
+    {
+      "endpoint": "*",
+      "isStaticContent": false,
+      "client": "2",
+      "destination": {
+        "path": "https://2k12develop1.datamasons.com:9999",
         "requiresAuthentication": "false",
         "sendCookiesAndAuth": true
       }
